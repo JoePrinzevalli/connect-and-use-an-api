@@ -15,7 +15,7 @@ function fetchData(url) {           // look into making this into an async funct
         // .then(employeeCards)
         .catch(err => console.log(err))
 }
-console.log(fetchData('https://randomuser.me/api/'))
+console.log(fetchData('https://randomuser.me/api/?results=12&inc=name,email,location,picture'))
 
 
 // HTML Maker //
