@@ -5,9 +5,12 @@
 /* Main Body Styles */
 * {
     background-color: aliceblue;
+    font-family: 'Varela Round', sans-serif;
 }
 .main-header {
-    margin-left: 25px;
+    margin-left: 35px;
+    margin-top: 30px;
+    margin-bottom: 40px;
     font-size: 24px;
     color: lightslategray;
 }
@@ -16,27 +19,46 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-
+    margin-left: 20px;
+    margin-right: 20px;
 }
 .card {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    border: 2px solid gray;
+    justify-content: space-evenly;
+    border: 2px solid lightslategray;
+    border-radius: 25px;
     width: 30%;
     margin-bottom: 40px;
-    
+    height: 150px;
 }
-
+.card:hover {
+    border: 2px solid skyblue;
+}
+.card,
+.text-container,
+.name,
+.contact {
+    background-color: white;
+}
 img {
     border-radius: 50%;
     height: 105px;
     width: 125px;
     margin: auto 0;
+    margin-top: 20px;
 }
-
-
-
+.name {
+    color: lightslategray;
+    font-size: 22px;
+    margin-bottom: 15px;
+    margin-top: 30px;
+}
+.contact {
+    color: lightslategray;
+    font-size: 14px;
+    margin-top: 0;
+}
 
 
 /* Overlay CSS */
@@ -71,3 +93,5 @@ body {
 .hidden {
     display: none;
 }
+
+/* Add Media Queries for responsive design */
