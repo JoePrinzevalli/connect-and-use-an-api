@@ -79,7 +79,19 @@ body {
     position: relative;
     text-align: center;
     padding: 30px 20px;
-    background: skyblue;
+    background: white;
+    border: 3px solid skyblue;
+    border-radius: 25px;
+}
+.text-container,
+.modal-content,
+.name,
+.email,
+.address,
+.phone,
+.dob {
+    background-color: white;
+    color: lightslategray;
 }
 .modal-close {
     position: absolute;
@@ -94,4 +106,24 @@ body {
     display: none;
 }
 
-/* Add Media Queries for responsive design */
+/* Add Media Queries for responsive design    */
+
+/* fix this meida query, maybe make only one column of cards at 758px should be a bit easier. */
+
+@media only screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    .card {
+        width: 80%;
+    }
+  }
+
+  /* @media only screen and (max-width: 320px) {
+    .container {
+        flex-direction: column;
+    }
+    .card {
+        width: 90%;
+    }
+  } */
