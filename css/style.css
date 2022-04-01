@@ -105,6 +105,20 @@ body {
 .hidden {
     display: none;
 }
+.left-arrow,
+.right-arrow {
+    color: lightslategray;
+    background-color: white;
+    font-size: 20px;
+    border: none;
+    width: 45px;
+}
+.left-arrow {
+    padding-right: 20px;
+}
+.right-arrow {
+    padding-left: 20px;
+}
 
 /* Add Media Queries for responsive design    */
 

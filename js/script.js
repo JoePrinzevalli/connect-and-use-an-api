@@ -5,6 +5,8 @@ const card = document.querySelectorAll('.card');
 const image = document.querySelector('.profile');
 const modalContainer = document.querySelector(".modal-content");
 const modalClose = document.querySelector('button');
+const leftArrow = document.querySelectorAll('.left-arrow');
+const rightArrow = document.querySelectorAll('.right-arrow');
 let employees = [];
 let browserHTML = '';
 let modalHTML = '';
@@ -61,7 +63,9 @@ const modalFunction = (index) => {
         <div class="modal">
         <div class="modal-content">
         <button class="modal-close">X</button>
+            <img class='left-arrow'src='img/left-arrow.svg'>
             <img class="avatar" src=${picture.large} />
+            <img class='right-arrow'src='img/right-arrow.svg'>
             <div class="text-container">
                 <h2 class="name">${name.first} ${name.last}</h2>
                     <p class="email">${email}</p>
@@ -84,26 +88,39 @@ container.addEventListener('click', (e) => {
     if(e.target != container) {
         const employee = e.target.closest('.card');
         const index = employee.getAttribute('data-index');
+        if(e.target === leftArrow) {
+            const index = employee.getAttribute('data-index' - 1);
+            console.log('left arrow works')
+            modalFunction(index);
+            } else if (e.target === rightArrow) {
+                const index = employee.getAttribute('data-index' + 1)
+                console.log('right arrow works')
+                modalFunction(index);
+            }
         modalFunction(index);
     };
     document.querySelector('html').style.backgroundColor = 'rgba(100, 100, 100, 0.4)';
 });
 
-// fix 'x' button // why wont x button work //
-
 if(modalClose){
-    modalClose.addEventListener('click', () => {
+    modalClose.addEventListener('click', () => {  // fix 'x' button // why wont x button work //
         if(modalClose.classList.contains('modal-close')) {
             overlay.classList.add('hidden');
         }
     });
 };
 
-// modalClose.addEventListener('click', () => {
-//     if(modalClose.classList.contains('modal-close')) {
-//         overlay.classList.add('hidden');
-//     }
-// });
+// if(modalContainer) {
+// modalContainer.addEventListener('click', (e) => {
+//     if(e.target === leftArrow) {
+//         const index = employee.getAttribute('data-index' - 1)
+//         modalFunction(index);
+//         } else if (e.target === rightArrow) {
+//             const index = employee.getAttribute('data-index' + 1)
+//             modalFunction(index);
+//         }
+//     })
+// };
 
 
 
