@@ -98,8 +98,9 @@ body {
     right: 9px;
     top: 9px;
     cursor: pointer;
-    background-color: darkgrey;
-    color: ghostwhite;
+    background-color: white;
+    color: skyblue;
+    border: 2px solid skyblue;;
     border-radius: 20%;
 }
 .hidden {
@@ -114,10 +115,10 @@ body {
     width: 45px;
 }
 .left-arrow {
-    padding-right: 20px;
+    margin-right: 20px;
 }
 .right-arrow {
-    padding-left: 20px;
+    margin-left: 20px;
 }
 
 /* Add Media Queries for responsive design    */

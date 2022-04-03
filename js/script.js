@@ -3,10 +3,8 @@ const container = document.querySelector('.container');
 const overlay = document.querySelector('.overlay');
 const card = document.querySelectorAll('.card');
 const image = document.querySelector('.profile');
-const modalContainer = document.querySelector(".modal-content");
+// const modalContainer = document.querySelector(".modal-content");
 // const modalClose = document.querySelector('.modal-close');
-const leftArrow = document.querySelectorAll('.left-arrow');
-const rightArrow = document.querySelectorAll('.right-arrow');
 let employees = [];
 let browserHTML = '';
 let modalHTML = '';
@@ -79,7 +77,7 @@ const modalFunction = (index) => {
         </div>
         `;
     overlay.classList.remove('hidden');
-    overlay.insertAdjacentHTML('beforeend', modalHTML);
+    overlay.innerHTML = modalHTML;
 }
 
 // Event Listeners //
@@ -88,31 +86,35 @@ container.addEventListener('click', (e) => {
     if(e.target != container) {
         const employee = e.target.closest('.card');
         const index = employee.getAttribute('data-index');
-        console.log(index)
+        employee.classList.add('chosen');
         modalFunction(index);
     };
-    document.querySelector('html').style.backgroundColor = 'rgba(100, 100, 100, 0.4)';
+    // document.querySelector('html').style.backgroundColor = 'rgba(100, 100, 100, 0.4)';
 });
 
 
-    overlay.addEventListener('click', (e) => {  // fix 'x' button // why wont x button work //
-        if(e.target === document.querySelector('.modal-close')) {
-            overlay.classList.add('hidden');
-            console.log('this x button works')
-        }
-    });
+overlay.addEventListener('click', (e) => {  
+    if(e.target === document.querySelector('.modal-close')) {
+        overlay.classList.add('hidden');
+        document.querySelector('.chosen').classList.remove('.chosen')
+    };
+    const leftArrow = document.querySelector('.left-arrow');
+    const rightArrow = document.querySelector('.right-arrow');
+    const dataIndex = document.querySelector('.chosen');   //.getAttribute('data-index')//
+    if(e.target === leftArrow) {
+        // document.querySelector(".modal-content").innerHTML = dataIndex.previousElementSibling
+        const previous = dataIndex.previousElementSibling.getAttribute('data-index')
+        modalFunction(previous)
+        } else if (e.target === rightArrow) {
+            document.querySelector(".modal-content").innerHTML = dataIndex.nextElementSibling
+        };
+});
 
-// if(modalContainer) {
-// modalContainer.addEventListener('click', (e) => {
-//     if(e.target === leftArrow) {
-//         const index = employee.getAttribute('data-index' - 1)
-//         modalFunction(index);
-//         } else if (e.target === rightArrow) {
-//             const index = employee.getAttribute('data-index' + 1)
-//             modalFunction(index);
-//         }
-//     })
-// };
+
+
+
+
+
 
 
 
