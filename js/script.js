@@ -3,7 +3,7 @@ const container = document.querySelector('.container');
 const overlay = document.querySelector('.overlay');
 const card = document.querySelectorAll('.card');
 const image = document.querySelector('.profile');
-// const modalContainer = document.querySelector(".modal-content");
+const modalContainer = document.querySelector(".modal-content");
 // const modalClose = document.querySelector('.modal-close');
 let employees = [];
 let browserHTML = '';
@@ -80,6 +80,9 @@ const modalFunction = (index) => {
     overlay.innerHTML = modalHTML;
 }
 
+const clearOverlay = () => {
+    overlay.innerHTML = ""
+}
 // Event Listeners //
 
 container.addEventListener('click', (e) => {
@@ -100,20 +103,29 @@ overlay.addEventListener('click', (e) => {
     };
     const leftArrow = document.querySelector('.left-arrow');
     const rightArrow = document.querySelector('.right-arrow');
-    const dataIndex = document.querySelector('.chosen');   //.getAttribute('data-index')//
+    let dataIndex = document.querySelector('.chosen').getAttribute('data-index')
     if(e.target === leftArrow) {
-        // document.querySelector(".modal-content").innerHTML = dataIndex.previousElementSibling
-        const previous = dataIndex.previousElementSibling.getAttribute('data-index');
-        console.log(modalFunction(previous));
-        document.querySelector(".modal-content").replaceChildren(previous); 
+        let leftIndex = dataIndex - 1;
+        clearOverlay();
+        modalFunction(leftIndex)
         } else if (e.target === rightArrow) {
-            const next = dataIndex.nextElementSibling.getAttribute('data-index');
-            console.log(modalFunction(next));
-            document.querySelector(".modal-content").replaceChildren(next); 
+            let rightIndex = dataIndex + 1;
+            clearOverlay();
+            modalFunction(rightIndex)
         };
 });
 
-
+// if(e.target === leftArrow) {
+//     clearOverlay()
+//     const previous = dataIndex.previousElementSibling.getAttribute('data-index');
+//     console.log(modalFunction(previous));
+//     document.querySelector(".modal-content").replaceChildren(previous); 
+//     } else if (e.target === rightArrow) {
+//         clearOverlay()
+//         const next = dataIndex.nextElementSibling.getAttribute('data-index');
+//         console.log(modalFunction(next));
+//         document.querySelector(".modal-content").replaceChildren(next); 
+//     };
 
 
 
