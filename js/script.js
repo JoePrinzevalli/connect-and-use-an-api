@@ -103,10 +103,13 @@ overlay.addEventListener('click', (e) => {
     const dataIndex = document.querySelector('.chosen');   //.getAttribute('data-index')//
     if(e.target === leftArrow) {
         // document.querySelector(".modal-content").innerHTML = dataIndex.previousElementSibling
-        const previous = dataIndex.previousElementSibling.getAttribute('data-index')
-        modalFunction(previous)
+        const previous = dataIndex.previousElementSibling.getAttribute('data-index');
+        console.log(modalFunction(previous));
+        document.querySelector(".modal-content").replaceChildren(previous); 
         } else if (e.target === rightArrow) {
-            document.querySelector(".modal-content").innerHTML = dataIndex.nextElementSibling
+            const next = dataIndex.nextElementSibling.getAttribute('data-index');
+            console.log(modalFunction(next));
+            document.querySelector(".modal-content").replaceChildren(next); 
         };
 });
 
