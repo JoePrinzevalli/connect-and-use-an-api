@@ -1,4 +1,5 @@
 //---Variables---//
+
 const container = document.querySelector('.container');
 const overlay = document.querySelector('.overlay');
 const card = document.querySelectorAll('.card');
@@ -12,14 +13,13 @@ let modalHTML = '';
 
 //---Fetch Function---//
 
-function fetchData(url) {           // look into making this into an async function //
+function fetchData(url) {           
     return fetch(url)
             .then(res => res.json())
             .then(data => employeeCards(data.results))
             .catch(err => console.log(err))
 }
-
-console.log(fetchData('https://randomuser.me/api/?results=12&inc=name,email,location,picture,cell,dob'))
+fetchData('https://randomuser.me/api/?results=12&inc=name,email,location,picture,cell,dob');
 
 //---Helper Functions---//
 
@@ -46,7 +46,7 @@ const employeeCards = (data) => {
 };
 
 const modalFunction = (index) => {
-    let { name, dob, cell, email, location: { city, street, state, postcode  //for some reeason cell works but not phone, also when the number is lesss than 10 digits restuructuing doesn't work //
+    let { name, dob, cell, email, location: { city, street, state, postcode 
     }, picture } = employees[index];
    
     let date = new Date(dob.date);
@@ -55,9 +55,7 @@ const modalFunction = (index) => {
         <div class="modal">
         <div class="modal-content">
         <button class="modal-close">X</button>
-            <img class='left-arrow'src='img/left-arrow.svg'>
             <img class="avatar" src=${picture.large} />
-            <img class='right-arrow'src='img/right-arrow.svg'>
             <div class="text-container">
                 <h2 class="name">${name.first} ${name.last}</h2>
                     <p class="email">${email}</p>
@@ -83,45 +81,32 @@ container.addEventListener('click', (e) => {
         const index = employee.getAttribute('data-index');
         employee.classList.add('chosen');
         modalFunction(index);
-    };
+    }; 
 });
 
 overlay.addEventListener('click', (e) => {  
     if(e.target === document.querySelector('.modal-close')) {
         overlay.classList.add('hidden');
         document.querySelector('.chosen').classList.remove('.chosen');
-        
     };
 });
 
-    const leftArrow = document.querySelector('.left-arrow');
-    const rightArrow = document.querySelector('.right-arrow');
     
 
-    leftArrow.addEventListener('click', (e) => {
-        if(e.target === leftArrow) {
-            let dataIndex = document.querySelector('.chosen').getAttribute('data-index');
-            let leftIndex = dataIndex - 1;
-            modalFunction(leftIndex);
-        };
-    })
-    rightArrow.addEventListener('click', (e) => {
-        if (e.target === rightArrow) {
-            let dataIndex = document.querySelector('.chosen').getAttribute('data-index');
-            let rightIndex = dataIndex + 1
-            modalFunction(rightIndex);
-        };
-    })
 
 
-    // if(e.target === leftArrow) {
-    //     let leftIndex = dataIndex - 1
-    //     modalFunction(leftIndex);
-    //     } else if (e.target === rightArrow) {
-    //         let rightIndex = dataIndex + 1
-    //         modalFunction(rightIndex);
-    //     };
-
+//---NOT FOR PROJECT, code I would like to work with after---// 
+ 
+// let dataIndex = document.querySelector('.chosen').getAttribute('data-index');
+//     const leftArrow = document.querySelector('.left-arrow');
+//     const rightArrow = document.querySelector('.right-arrow');
+//     if(e.target === leftArrow) {
+//         let leftIndex = dataIndex - 1
+//         modalFunction(leftIndex);
+//         } else if (e.target === rightArrow) {
+//             let rightIndex = dataIndex + 1
+//             modalFunction(rightIndex);
+//         };
 
 // if(e.target === leftArrow) {
 //     clearOverlay()
@@ -135,6 +120,9 @@ overlay.addEventListener('click', (e) => {
 //         document.querySelector(".modal-content").replaceChildren(next); 
 //     };
 
+{/* <img class='left-arrow'src='img/left-arrow.svg'>
+<img class="avatar" src=${picture.large} />
+<img class='right-arrow'src='img/right-arrow.svg'> */}
 
 
 
