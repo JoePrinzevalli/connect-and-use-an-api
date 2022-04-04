@@ -11,6 +11,7 @@ let modalHTML = '';
 
 
 // Fetch Function //
+
 function fetchData(url) {           // look into making this into an async function //
     return fetch(url)
             .then(res => res.json())
@@ -81,8 +82,10 @@ const modalFunction = (index) => {
 }
 
 const clearOverlay = () => {
-    overlay.innerHTML = ""
-}
+    overlay.innerHTML = '';
+};
+
+
 // Event Listeners //
 
 container.addEventListener('click', (e) => {
@@ -99,18 +102,17 @@ container.addEventListener('click', (e) => {
 overlay.addEventListener('click', (e) => {  
     if(e.target === document.querySelector('.modal-close')) {
         overlay.classList.add('hidden');
-        document.querySelector('.chosen').classList.remove('.chosen')
+        document.querySelector('.chosen').classList.remove('.chosen');
     };
     const leftArrow = document.querySelector('.left-arrow');
     const rightArrow = document.querySelector('.right-arrow');
-    let dataIndex = document.querySelector('.chosen').getAttribute('data-index')
+    const dataIndex = document.querySelector('.chosen').getAttribute('data-index');
+    overlay.innerHTML = '';
     if(e.target === leftArrow) {
         let leftIndex = dataIndex - 1;
-        clearOverlay();
         modalFunction(leftIndex)
         } else if (e.target === rightArrow) {
             let rightIndex = dataIndex + 1;
-            clearOverlay();
             modalFunction(rightIndex)
         };
 });
