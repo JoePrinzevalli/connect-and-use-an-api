@@ -90,18 +90,38 @@ overlay.addEventListener('click', (e) => {
     if(e.target === document.querySelector('.modal-close')) {
         overlay.classList.add('hidden');
         document.querySelector('.chosen').classList.remove('.chosen');
+        
     };
+});
+
     const leftArrow = document.querySelector('.left-arrow');
     const rightArrow = document.querySelector('.right-arrow');
-    let dataIndex = document.querySelector('.chosen').getAttribute('data-index');
-    if(e.target === leftArrow) {
-        // let leftIndex = dataIndex;
-        modalFunction(dataIndex - 1);
-        } else if (e.target === rightArrow) {
-            // let rightIndex = dataIndex++;
-            modalFunction(dataIndex + 1);
+    
+
+    leftArrow.addEventListener('click', (e) => {
+        if(e.target === leftArrow) {
+            let dataIndex = document.querySelector('.chosen').getAttribute('data-index');
+            let leftIndex = dataIndex - 1;
+            modalFunction(leftIndex);
         };
-});
+    })
+    rightArrow.addEventListener('click', (e) => {
+        if (e.target === rightArrow) {
+            let dataIndex = document.querySelector('.chosen').getAttribute('data-index');
+            let rightIndex = dataIndex + 1
+            modalFunction(rightIndex);
+        };
+    })
+
+
+    // if(e.target === leftArrow) {
+    //     let leftIndex = dataIndex - 1
+    //     modalFunction(leftIndex);
+    //     } else if (e.target === rightArrow) {
+    //         let rightIndex = dataIndex + 1
+    //         modalFunction(rightIndex);
+    //     };
+
 
 // if(e.target === leftArrow) {
 //     clearOverlay()
