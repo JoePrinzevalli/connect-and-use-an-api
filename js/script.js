@@ -58,7 +58,7 @@ const modalFunction = (index) => {
    
     let date = new Date(dob.date);
  
-    modalHTML += `
+    modalHTML = `
         <div class="modal">
         <div class="modal-content">
         <button class="modal-close">X</button>
@@ -81,9 +81,10 @@ const modalFunction = (index) => {
     overlay.innerHTML = modalHTML;
 }
 
-const clearOverlay = () => {
-    overlay.innerHTML = '';
-};
+// const clearOverlay = () => {
+//     overlay.removeChild(document.querySelector('.modal'))
+// };
+
 
 
 // Event Listeners //
@@ -110,10 +111,10 @@ overlay.addEventListener('click', (e) => {
     overlay.innerHTML = '';
     if(e.target === leftArrow) {
         let leftIndex = dataIndex - 1;
-        modalFunction(leftIndex)
+        modalFunction(leftIndex);
         } else if (e.target === rightArrow) {
             let rightIndex = dataIndex + 1;
-            modalFunction(rightIndex)
+            modalFunction(rightIndex);
         };
 });
 
