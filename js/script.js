@@ -1,4 +1,4 @@
-// Variables //
+//---Variables---//
 const container = document.querySelector('.container');
 const overlay = document.querySelector('.overlay');
 const card = document.querySelectorAll('.card');
@@ -10,7 +10,7 @@ let browserHTML = '';
 let modalHTML = '';
 
 
-// Fetch Function //
+//---Fetch Function---//
 
 function fetchData(url) {           // look into making this into an async function //
     return fetch(url)
@@ -21,14 +21,7 @@ function fetchData(url) {           // look into making this into an async funct
 
 console.log(fetchData('https://randomuser.me/api/?results=12&inc=name,email,location,picture,cell,dob'))
 
-
-// fetch('https://randomuser.me/api/?results=12&nat=us&inc=name,email,location,picture,cell,dob')
-// .then(res => res.json())
-// .then(data => employeeCards(data.results))
-// .catch(err => console.log(err))
-
-
-// Helper Functions //
+//---Helper Functions---//
 
 const employeeCards = (data) => {
     employees = data;
@@ -81,13 +74,8 @@ const modalFunction = (index) => {
     overlay.innerHTML = modalHTML;
 }
 
-// const clearOverlay = () => {
-//     overlay.removeChild(document.querySelector('.modal'))
-// };
 
-
-
-// Event Listeners //
+//---Event Listeners---//
 
 container.addEventListener('click', (e) => {
     if(e.target != container) {
@@ -96,9 +84,7 @@ container.addEventListener('click', (e) => {
         employee.classList.add('chosen');
         modalFunction(index);
     };
-    // document.querySelector('html').style.backgroundColor = 'rgba(100, 100, 100, 0.4)';
 });
-
 
 overlay.addEventListener('click', (e) => {  
     if(e.target === document.querySelector('.modal-close')) {
@@ -107,14 +93,13 @@ overlay.addEventListener('click', (e) => {
     };
     const leftArrow = document.querySelector('.left-arrow');
     const rightArrow = document.querySelector('.right-arrow');
-    const dataIndex = document.querySelector('.chosen').getAttribute('data-index');
-    overlay.innerHTML = '';
+    let dataIndex = document.querySelector('.chosen').getAttribute('data-index');
     if(e.target === leftArrow) {
-        let leftIndex = dataIndex - 1;
-        modalFunction(leftIndex);
+        // let leftIndex = dataIndex;
+        modalFunction(dataIndex - 1);
         } else if (e.target === rightArrow) {
-            let rightIndex = dataIndex + 1;
-            modalFunction(rightIndex);
+            // let rightIndex = dataIndex++;
+            modalFunction(dataIndex + 1);
         };
 });
 
